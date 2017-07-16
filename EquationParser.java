@@ -62,6 +62,8 @@ public class EquationParser {
     public String toString() {
       return this.tokens.toString();
     }
+    // addToken() and appendRPN() are two (and he only ways) of growing
+    // the RPN expression.
     public void addToken(String s) {
       this.tokens.push(s);
     }
@@ -75,6 +77,7 @@ public class EquationParser {
       }
     }
 
+    // Evalues the RPN expression and returns the result.
     public int evaluate() {
       List<String> tokens = new ArrayList<String>(this.tokens);
       Stack<Integer> stack = new Stack<Integer>();
@@ -151,6 +154,7 @@ public class EquationParser {
   // Leafs in an expression tree are represented by Term's which are
   // simple numbers.
   interface Expr {
+    // Evalues the expression and returns the result.
     public int evaluate();
     public String toString();
     public RPN toRPN();
